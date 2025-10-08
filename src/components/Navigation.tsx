@@ -97,7 +97,7 @@ const Navigation = () => {
             <div className="flex items-center gap-3">
               <div className="w-7 h-7 rounded-lg flex items-center justify-center glow-primary">
                 {/* <Bot className="w-5 h-5 text-primary-foreground" /> */}
-                <img src="src/assets/logo3.png" alt="Onesane Logo" />
+                <img src="./src/assets/logo3.png" alt="Onesane Logo" />
               </div>
               <span className="text-xl font-bold gradient-text">Onesane</span>
             </div>

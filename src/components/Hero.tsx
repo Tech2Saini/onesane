@@ -13,7 +13,7 @@ const Hero = () => {
       {/* Background with Hero Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src='src/assets/hero-ai-network.jpg'
+          src='./src/assets/hero-ai-network.jpg'
           alt="AI Neural Network"
           className="w-full h-full object-cover opacity-30"
         />
