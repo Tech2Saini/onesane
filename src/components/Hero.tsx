@@ -3,8 +3,6 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import AIJourneyModal from "./AIJourneyModal";
 import AIDemoModal from "./AIDemoModal";
-import heroImage from "@/assets/hero-ai-network.jpg"
-
 
 const Hero = () => {
   const [isJourneyModalOpen, setIsJourneyModalOpen] = useState(false);
@@ -15,7 +13,7 @@ const Hero = () => {
       {/* Background with Hero Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src={heroImage}
+          src='src/assets/hero-ai-network.jpg'
           alt="AI Neural Network"
           className="w-full h-full object-cover opacity-30"
         />
