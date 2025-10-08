@@ -2,6 +2,8 @@ import { Bot, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo3.png"
+
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -19,7 +21,7 @@ const Footer = () => {
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center glow-primary">
                 {/* <Bot className="w-5 h-5 text-primary-foreground" /> */}
-                <img src="./src/assets/logo3.png" alt="Onesane Logo" />
+                <img src={logo} alt="Onesane Logo" />
               </div>
               <span className="text-xl font-bold gradient-text">Onesane</span>
             </div>
