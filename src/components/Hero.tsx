@@ -1,7 +1,6 @@
 import { ArrowRight, Bot, Zap, Users, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import heroImage from "@/assets/hero-ai-network.jpg";
 import AIJourneyModal from "./AIJourneyModal";
 import AIDemoModal from "./AIDemoModal";
 
@@ -14,7 +13,7 @@ const Hero = () => {
       {/* Background with Hero Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src={heroImage}
+          src='/src/assets/hero-ai-network.jpg'
           alt="AI Neural Network"
           className="w-full h-full object-cover opacity-30"
         />
