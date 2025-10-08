@@ -21,13 +21,13 @@ function BlogItems() {
     console.log("The blogs are : ", blogs)
   }, [])
 
-  if (loading) return <div className='flex items-center justify-center h-[100vh] flex-col fixed top-0 left-0 w-full bg-background z-50'>
+  if (loading) return <div className='flex items-center justify-center h-[100vh] flex-col z-50'>
     <div className="w-20 h-20 border-4 border-dashed rounded-full animate-spin border-primary shadow-[0_0_20px_5px_rgba(59,130,246,0.6)]"></div>
     <p className="text-lg text-muted-foreground mx-4 mt-3">Loading...</p>
   </div>;
 
   return (
-    <div className="grid lg:grid-cols-3 gap-8 mb-16">
+    <div className="grid lg:grid-cols-3 gap-4 mb-16">
       {blogs.map((post, index) => (
         <Card onClick={() => { navigate(`/blog/${post.slug}`) }}
           key={post.id}
@@ -45,14 +45,14 @@ function BlogItems() {
                 Featured
               </Badge>
             </div>
-            <div className="absolute top-4 right-4">
+            <div className="absolute top-4 right-4 hidden">
               {/* <post.icon className="w-8 h-8 text-white animate-pulse-neon" /> */}
               Icon
             </div>
           </div>
 
           <CardHeader>
-            <div className="flex items-center gap-4 mb-3 text-sm text-muted-foreground">
+            <div className="flex items-center justify-between gap-4 mb-3 text-sm text-muted-foreground">
               <Badge variant="outline" className="neon-glow">
                 {post.category.name}
               </Badge>
@@ -60,7 +60,7 @@ function BlogItems() {
                 <Calendar className="w-4 h-4" />
                 {new Date(post.created_at).toLocaleDateString()}
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 hidden">
                 <Clock className="w-4 h-4" />
                 {formatReadingTime(post.read_time)}
               </div>
@@ -84,10 +84,6 @@ function BlogItems() {
                 <div className="flex items-center gap-2">
                   <MessageSquare className="w-4 h-4 text-primary" />
                   <span className="text-sm font-medium">{post.comments_count} comments</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MessageSquare className="w-4 h-4 text-primary" />
-                  <span className="text-sm font-medium">{post.read_time} read</span>
                 </div>
               </div>
             </div>

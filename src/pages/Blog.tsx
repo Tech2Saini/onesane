@@ -108,12 +108,12 @@ const Blog = () => {
     <div className="min-h-screen bg-background parallax-bg">
       {/* Hero Section */}
 
-      <div className="relative overflow-hidden pt-20 pb-16">
+      <div className="relative overflow-hidden pt-20 pb-10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 py-2 px-3 rounded-full glass-panel mb-8 animate-fade-in-up">
               <BookOpen className="w-5 h-5 text-primary animate-pulse-neon" />
               <span className="text-sm font-medium">Business Insights & Tutorials</span>
             </div>
@@ -122,7 +122,7 @@ const Blog = () => {
               Blog & Insights
             </h1>
 
-            <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               Expert insights on AI, automation, freelancing, and business growth.
               Practical guides to help you stay ahead in the digital transformation era.
             </p>
@@ -157,7 +157,7 @@ const Blog = () => {
       </div>
 
       {/* Category Filter */}
-      <div className="pt-12 pb-6">
+      <div className="pt-12 pb-6 hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {categories.map((category) => (
