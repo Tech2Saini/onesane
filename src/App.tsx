@@ -28,10 +28,13 @@ import AuthProvider from '@/Contexts/AuthProvider'; // ✅ Correct path
 import BlogPost from "@/pages/SingleBlog";
 import ScrollTop from "./components/ScrollTop";
 const queryClient = new QueryClient();
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+
 
 
 const App = () => (
 
+  <GoogleReCaptchaProvider reCaptchaKey="6LcovOgrAAAAAKVtEz-WK8OLpxCruGR2aWgFKVVY">
 
 
   <QueryClientProvider client={queryClient}>
@@ -73,6 +76,7 @@ const App = () => (
       </BlogProvider>
     </TooltipProvider>
   </QueryClientProvider>
+  </GoogleReCaptchaProvider>
 );
 
 export default App;

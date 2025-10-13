@@ -8,8 +8,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useState, useRef, useContext } from "react";
 import authContact from "@/Contexts/AuthContact";
 import { useToast } from "@/hooks/use-toast";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
 
 const ContactPage = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   const contactInfo = [
     {
       icon: Mail,
@@ -42,7 +46,7 @@ const ContactPage = () => {
     "Other"
   ];
 
-  const [contactFields, setContactFields] = useState({ firstName: "", lastName: "", email: "", message: "", service: "", company: "" });
+  const [contactFields, setContactFields] = useState({ firstName: "", lastName: "", email: "", message: "", service: "", company: "", recaptcha_token: "" });
   const [submitRef, setSubmitRef] = useState(false);
   const { saveContact } = useContext(authContact);
   const { toast } = useToast();
@@ -51,11 +55,29 @@ const ContactPage = () => {
     e.preventDefault();
     setSubmitRef(true);
     // Handle form submission
-    const response = await saveContact(contactFields);
+
+    e.preventDefault();
+    if (!executeRecaptcha) return;
+
+    const token = await executeRecaptcha("contact_form");
+
+    if (!token) {
+      toast({ title: "ReCAPTCHA failed", description: "Please try again.", variant: "destructive" });
+      setSubmitRef(false);
+      return;
+    }
+
+    // ✅ Create a local object with the token included
+    const payload = {
+      ...contactFields,
+      recaptcha_token: token,
+    };
+
+    const response = await saveContact(payload);
 
     if (response.success) {
       toast({ title: "Your message has been sent", description: response.message, variant: "default" });
-      setContactFields({ firstName: "", lastName: "", email: "", message: "", service: "", company: "" });
+      setContactFields({ firstName: "", lastName: "", email: "", message: "", service: "", company: "", recaptcha_token: "" });
     } else {
       toast({ title: "Failed to save contact", description: response.message, variant: "destructive" });
     }
@@ -195,6 +217,7 @@ const ContactPage = () => {
                     required
                   />
                 </div>
+
 
                 <Button className="w-full bg-gradient-primary text-primary-foreground hover:scale-105 transition-all duration-300 glow-primary group">
                   <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

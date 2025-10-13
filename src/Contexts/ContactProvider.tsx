@@ -45,7 +45,8 @@ const ContactProvider = ({ children }: { children: ReactNode }) => {
             email: data.email,
             company: data.company,
             service: data.service,
-            message: data.message
+            message: data.message,
+            recaptcha_token: data.recaptcha_token
         }
         return await apiRequest("contact/", "POST", new_data);
     };
